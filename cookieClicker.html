@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookie Clicker Mania</title>
+  </head>
+  <body
+    style="
+      font-family: sans-serif;
+      align-content: center;
+      text-align: center;
+      padding-top: 60px;
+      background-color: #eef;
+      font-size: larger;
+    "
+  >
+    <button id="button">🍪</button>
+    <h1 id="counter">0</h1>
+    <div id="message"></div>
 
+    <script>
+      const body = document.getElementsByTagName('body')[0];
+      const messageDisplay = document.getElementById('message');
+      let counterDisplay = document.getElementById('counter');
+      let counter = 0;
+      const colors = ['pink', 'green', 'orange', 'blue', 'red', 'purple'];
+      let index = 0;
+
+      const button = document.getElementById('button');
+      button.addEventListener('click', (event) => {
+        counter += 1;
+        counterDisplay.textContent = counter;
+        if (index === colors.length - 1) index = 0;
+        else {
+          index += 1;
+        }
+        body.style.backgroundColor = colors[index];
+
+        if (counter === 10) {
+          messageDisplay.textContent = 'Not a bad start, keep going!';
+        }
+        if (counter === 20) {
+          messageDisplay.textContent = `Wait, you're still going?!`;
+        }
+        if (counter === 50) {
+          messageDisplay.textContent = 'You are a madman! 50 times!!';
+        }
+        if (counter === 100) {
+          messageDisplay.textContent = 'You win! Maybe take a break..';
+          button.textContent = '🏆';
+          alert('Please, take mercy on the button.');
+          body.style.backgroundColor = 'white';
+        }
+      });
+    </script>
+  </body>
+</html>
